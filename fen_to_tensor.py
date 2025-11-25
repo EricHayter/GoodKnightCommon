@@ -56,7 +56,7 @@ def get_tensor_bytes_from_fen(fen: str) -> bytes:
     # else: black to move (already 0 by default)
 
     # Return as a Python bytes object
-    return tensor.tobytes()
+    return tensor
 
 def main():
     args = sys.argv
@@ -65,11 +65,8 @@ def main():
         return
     fen = args[1]
 
-    tensor_bytes = get_tensor_bytes_from_fen(fen)
-    hex_str = tensor_bytes.hex()
-    # Ensure the hex string is padded to the expected length (NUM_BYTES * 2 hex chars)
-    expected_hex_length = NUM_BYTES * 2
-    print(hex_str.zfill(expected_hex_length))
+    tensor = get_tensor_bytes_from_fen(fen)
+    print(tensor)
 
 if __name__ == "__main__":
     main()
